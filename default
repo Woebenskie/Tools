@@ -1,0 +1,19 @@
+# D-I config version 2.0
+# search path for the c32 support libraries (libcom32, libutil etc.)
+path debian-installer/amd64/boot-screens/
+#include debian-installer/amd64/boot-screens/menu.cfg
+default debian-installer/amd64/boot-screens/vesamenu.c32
+prompt 0
+timeout 0
+
+
+label debianbuster-min-vm
+        MENU LABEL ^Debian Autoinstall Buster Minimal VM
+        LINUX /debian-installer/amd64/linux
+        INITRD /debian-installer/amd64/initrd.gz
+        APPEND vga=788 preseed/url=tftp://192.168.0.210/preseed.cfg debian-installer/locale=en_US debian-installer/country=NL debian-installer/language=en debian-installer/allow_unauthenticated_ssl=true keyboard-configuration/xkb-keymap=us
+        TEXT HELP
+        User:root
+        Pass:root
+        ENDTEXT
+PXE-TEST buster/pxe
