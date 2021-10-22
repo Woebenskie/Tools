@@ -45,7 +45,7 @@ runuser -l gidpro -c 'ssh-import-id gh:woebenskie'
 ####################################################
 apt remove -y debian-faq debian-faq-de debian-faq-fr debian-faq-it debian-faq-zh-cn doc-debian eject foomatic-filters laptop-detect
 systemctl disable ModemManager
-systemctl disable wpa-supplicant
+systemctl disable wpa_supplicant
 apt autoremove
 apt autoclean
 apt clean
