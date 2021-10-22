@@ -14,7 +14,7 @@ apt-get -y upgrade
 ####################################################
 # Install default tools
 ####################################################
-apt-get -y install open-vm-tools sudo neovim cockpit lvm2 udisks2-lvm2 udisks2 udisks2-zram tuned bmon mc zip arj ssh-import-id curl ufw lrzsz chrony htop uuid-runtime socat haveged testssl.sh shellcheck lnav 
+apt-get -y install open-vm-tools sudo neovim cockpit lvm2 udisks2-lvm2 udisks2 udisks2-zram tuned bmon mc zip arj ssh-import-id curl ufw lrzsz chrony htop uuid-runtime socat haveged testssl.sh shellcheck lnav levee
 
 ####################################################
 # Install Memory Management tools
@@ -38,6 +38,14 @@ runuser -l root -c 'ssh-import-id gh:woebenskie'
 runuser -l gidpro -c 'ssh-import-id gh:haringstad'   
 runuser -l gidpro -c 'ssh-import-id gh:woebenskie' 
 
+####################################################
+# cleanup
+####################################################
+apt remove -y debian-faq debian-faq-de debian-faq-fr debian-faq-it debian-faq-zh-cn doc-debian eject foomatic-filters laptop-detect wpa-supplicant
+systemctl disable ModemManager
+apt autoremove
+apt autoclean
+apt clean
 ####################################################
 # End of the script
 ####################################################
