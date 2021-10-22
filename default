@@ -1,19 +1,40 @@
-# D-I config version 2.0
-# search path for the c32 support libraries (libcom32, libutil etc.)
-path debian-installer/amd64/boot-screens/
-#include debian-installer/amd64/boot-screens/menu.cfg
-default debian-installer/amd64/boot-screens/vesamenu.c32
+path Debian-11-netinstall/debian-installer/amd64/boot-screens/
+default Debian-11-netinstall/debian-installer/amd64/boot-screens/vesamenu.c32
 prompt 0
-timeout 0
+timeout 300
 
+MENU TITLE TFTP BOOT DEBIAN
+MENU RESOLUTION 640 480
+MENU BACKGROUND /splash.png
 
-label debianbuster-min-vm
-        MENU LABEL ^Debian Autoinstall Buster Minimal VM
-        LINUX /debian-installer/amd64/linux
-        INITRD /debian-installer/amd64/initrd.gz
-        APPEND vga=788 preseed/url=tftp://192.168.0.210/preseed.cfg debian-installer/locale=en_US debian-installer/country=NL debian-installer/language=en debian-installer/allow_unauthenticated_ssl=true keyboard-configuration/xkb-keymap=us
-        TEXT HELP
-        User:root
-        Pass:root
+LABEL local
+        MENU DEFAULT
+        MENU LABEL Boot from local hard drive
+        LOCALBOOT 0
+
+label debian-buster - 10
+        MENU LABEL ^Debian Auto install Buster (10)  VM
+        LINUX /Debian-10-netinstall/debian-installer/amd64/linux
+        INITRD /Debian-10-netinstall/debian-installer/amd64/initrd.gz
+        APPEND vga=788 preseed/url=tftp://10.16.23.245/preseed.cfg debian-installer/locale=en_US debian-installer/country=NL debian-installer/language=en debian-installer/allow_unauthenticated_ssl=true keyboard-configuration/xkb-keymap=us
         ENDTEXT
-PXE-TEST buster/pxe
+
+label manual-debian-buster - 10
+        MENU LABEL ^    Debian Manual install Buster (10)  VM
+        LINUX /Debian-10-netinstall/debian-installer/amd64/linux
+        INITRD /Debian-10-netinstall/debian-installer/amd64/initrd.gz
+        ENDTEXT
+
+
+label debian-bullseye - 11
+        MENU LABEL ^Debian Auto install Bullseye (11)  VM
+        LINUX /Debian-11-netinstall/debian-installer/amd64/linux
+        INITRD /Debian-11-netinstall/debian-installer/amd64/initrd.gz
+        APPEND vga=788 preseed/url=tftp://10.16.23.245/preseed.cfg debian-installer/locale=en_US debian-installer/country=NL debian-installer/language=en debian-installer/allow_unauthenticated_ssl=true keyboard-configuration/xkb-keymap=us
+        ENDTEXT
+
+label manual-debian-bullseye - 11
+        MENU LABEL ^    Debian manual install Bullseye (11)  VM
+        LINUX /Debian-11-netinstall/debian-installer/amd64/linux
+        INITRD /Debian-11-netinstall/debian-installer/amd64/initrd.gz
+        ENDTEXT
