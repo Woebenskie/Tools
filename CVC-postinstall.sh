@@ -56,6 +56,7 @@ apt update -y && apt upgrade -y
 apt install lighttpd vim nano openssl -y
 mkdir -p /etc/lighttpd/certs
 mkdir -p /etc/lighttpd/vhosts.d
+mkdir -p /var/www/vhosts
 openssl req -new -x509 -sha256 -newkey rsa:2048 -nodes -subj '/CN=localhost' -keyout /etc/lighttpd/certs/start.key.pem -days 1460 -out /etc/lighttpd/certs/start.cert.pem
 echo "server.modules += (\"mod_openssl\")" > /etc/lighttpd/vhosts.d/all-vhosts-ssl.conf
 echo "\$SERVER[\"socket\"] == \":443\" {" >> /etc/lighttpd/vhosts.d/all-vhosts-ssl.conf
@@ -63,6 +64,7 @@ echo "    ssl.engine=\"enable\" " >> /etc/lighttpd/vhosts.d/all-vhosts-ssl.conf
 echo "    ssl.pemfile=\"/etc/lighttpd/certs/start.cert.pem\" " >> /etc/lighttpd/vhosts.d/all-vhosts-ssl.conf
 echo "    ssl.privkey=\"/etc/lighttpd/certs/start.key.pem\" " >> /etc/lighttpd/vhosts.d/all-vhosts-ssl.conf
 echo "}" >> /etc/lighttpd/vhosts.d/all-vhosts-ssl.conf
+echo "include \"/etc/lighttpd/vhosts.d/*.conf\"" >> /etc/lighttpd/lighttpd.conf
 systemctl enable lighttpd
 
 mkdir -p /var/www/html/localhost
