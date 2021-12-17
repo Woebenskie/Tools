@@ -65,6 +65,8 @@ echo "    ssl.engine=\"enable\" " >> /etc/lighttpd/vhosts.d/all-vhosts-ssl.conf
 echo "    ssl.pemfile=\"/etc/lighttpd/certs/start.cert.pem\" " >> /etc/lighttpd/vhosts.d/all-vhosts-ssl.conf
 echo "    ssl.privkey=\"/etc/lighttpd/certs/start.key.pem\" " >> /etc/lighttpd/vhosts.d/all-vhosts-ssl.conf
 echo "}" >> /etc/lighttpd/vhosts.d/all-vhosts-ssl.conf
+echo "var.vhosts_dir" >> /etc/lighttpd/lighttpd.conf
+echo "var.log_root = \"/var/log/lighttpd\"" >> /etc/lighttpd/lighttpd.conf
 echo "include \"/etc/lighttpd/vhosts.d/*.conf\"" >> /etc/lighttpd/lighttpd.conf
 systemctl enable lighttpd
 
