@@ -37,8 +37,10 @@ update-grub
 echo "gidpro ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/10_gidpro 
 runuser -l root -c 'ssh-import-id gh:haringstad' 
 runuser -l root -c 'ssh-import-id gh:woebenskie' 
+runuser -l root -c 'ssh-import-id gh:SvenVisser1999' 
 runuser -l gidpro -c 'ssh-import-id gh:haringstad'   
 runuser -l gidpro -c 'ssh-import-id gh:woebenskie' 
+runuser -l gidpro -c 'ssh-import-id gh:SvenVisser1999' 
 
 ####################################################
 # cleanup
